@@ -27,6 +27,7 @@ namespace Akila.FPSFramework
         public Ragdoll ragdoll { get; set; }
         private Actor killer;
         private DeathCamera deathCamera;
+        private Animator animator;
         public Vector3 deathForce { get; set; }
         public float MaxHealth { get; set; }
         public IDamageableGroup[] groups { get; set; }
@@ -37,6 +38,7 @@ namespace Akila.FPSFramework
         {
             Actor = GetComponent<Actor>();
             ragdoll = GetComponent<Ragdoll>();
+            animator = GetComponent<Animator>();
 
             OnDeath.AddListener(Die);
             if (FindFirstObjectByType<GameManager>()) deathCamera = FindFirstObjectByType<GameManager>().DeathCamera;
@@ -104,6 +106,8 @@ namespace Akila.FPSFramework
 
         private void Die()
         {
+            animator.SetTrigger("Death");
+            
             if(type == HealthType.Humanoid)
             {
                 if (Actor.actorManager && Actor.actorManager.respawnable) Actor.ConfirmDeath();
