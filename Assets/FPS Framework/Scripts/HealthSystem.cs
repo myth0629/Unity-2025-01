@@ -33,6 +33,7 @@ namespace Akila.FPSFramework
         public IDamageableGroup[] groups { get; set; }
         private bool died;
         public bool deadConfirmed { get; set; }
+        private EnemyAI enemyAI;
 
         private void Start()
         {
@@ -104,9 +105,12 @@ namespace Akila.FPSFramework
             }
         }
 
-        private void Die()
+        public void Die()
         {
+            enemyAI = GetComponent<EnemyAI>();
             animator.SetTrigger("Death");
+            
+            enemyAI.ifDie();
             
             if(type == HealthType.Humanoid)
             {
