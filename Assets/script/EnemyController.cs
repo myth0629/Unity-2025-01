@@ -62,10 +62,9 @@ public class EnemyAI : MonoBehaviour
     {
        
         isAttacking = true; // 공격 시작
-        agent.isStopped = true; // 공격 중에는 이동 멈춤
         animator.SetTrigger("Attack"); // 공격 애니메이션 재생
         //공격 애니메이션이 끝나면 agent.isStopped=false가 되어야함
-        Invoke("ResetIsStopped", animator.GetCurrentAnimatorStateInfo(0).length);
+        Invoke("ResetIsStopped", animator.GetCurrentAnimatorStateInfo(0).length - 0.2f);
     }
 
     void ResetIsStopped()
@@ -80,9 +79,10 @@ public class EnemyAI : MonoBehaviour
 
     public void ifDie() // 몬스터가 죽었을 때 호출할 메서드
     {
-        healthSystem = GetComponent<HealthSystem>();
+        animator.SetTrigger("Death");
         canMove = false; // 이동 중지
         agent.isStopped = true; // 이동 멈춤
+        
         
         Destroy(gameObject, destroyDelay);
     }

@@ -108,7 +108,6 @@ namespace Akila.FPSFramework
         public void Die()
         {
             enemyAI = GetComponent<EnemyAI>();
-            animator.SetTrigger("Death");
             
             enemyAI.ifDie();
             
