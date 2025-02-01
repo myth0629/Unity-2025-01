@@ -109,7 +109,7 @@ namespace Akila.FPSFramework
         {
             enemyAI = GetComponent<EnemyAI>();
             
-            enemyAI.ifDie();
+            enemyAI?.ifDie();
             
             if(type == HealthType.Humanoid)
             {

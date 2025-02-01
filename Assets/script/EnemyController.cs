@@ -14,6 +14,8 @@ public class EnemyAI : MonoBehaviour
     private bool canMove = false; // 이동 가능 여부
     private HealthSystem healthSystem;
     public float destroyDelay;
+    public float attackCooldown = 1.0f; // 공격 쿨타임
+    private float nextAttackTime = 0f; // 다음 공격 가능 시간
 
     void Start()
     {
@@ -39,32 +41,40 @@ public class EnemyAI : MonoBehaviour
 
         if (distanceToPlayer <= attackRange)
         {
-            if (!isAttacking) // 공격 중이 아닐 때만 공격 시작
-            {
-                Attack();
-            }
+            // 공격 범위 내에 있으면 계속 Attack() 호출
+            Attack();
         }
         else
         {
-            isAttacking = false; // 공격 범위에서 벗어나면 공격 상태 해제
+            isAttacking = false;
+            agent.isStopped = false;
             agent.SetDestination(player.position);
-            // 이동 애니메이션 재생
-            if (agent.velocity.magnitude > 0.1f) // 이동 중일 때만 애니메이션 재생
+            
+            if (agent.velocity.magnitude > 0.1f)
             {
-                 animator.SetBool("Walk", true);
-            }else{
-                 animator.SetBool("Walk", false);
+                animator.SetBool("Walk", true);
+            }
+            else
+            {
+                animator.SetBool("Walk", false);
             }
         }
     }
 
     private void Attack()
     {
-       
-        isAttacking = true; // 공격 시작
-        animator.SetTrigger("Attack"); // 공격 애니메이션 재생
-        //공격 애니메이션이 끝나면 agent.isStopped=false가 되어야함
-        Invoke("ResetIsStopped", animator.GetCurrentAnimatorStateInfo(0).length - 0.2f);
+        if (Time.time >= nextAttackTime) // 현재 시간이 다음 공격 가능 시간보다 크거나 같으면
+        {
+            isAttacking = true;
+            animator.SetTrigger("Attack");
+            agent.isStopped = true; // 공격 시 이동 중지
+            
+            // 다음 공격 가능 시간 설정
+            nextAttackTime = Time.time + attackCooldown;
+            
+            // 공격 애니메이션이 끝나면 이동 재개
+            Invoke("ResetIsStopped", animator.GetCurrentAnimatorStateInfo(0).length);
+        }
     }
 
     void ResetIsStopped()
@@ -79,10 +89,16 @@ public class EnemyAI : MonoBehaviour
 
     public void ifDie() // 몬스터가 죽었을 때 호출할 메서드
     {
+        agent.enabled = false;
+        Debug.Log("Die");
         animator.SetTrigger("Death");
+        
+
         canMove = false; // 이동 중지
+        animator.SetBool("Walk", false);
         agent.isStopped = true; // 이동 멈춤
         
+
         
         Destroy(gameObject, destroyDelay);
     }
