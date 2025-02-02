@@ -96,6 +96,19 @@ namespace Akila.FPSFramework
             UpdateSystem();
         }
 
+        private void OnTriggerEnter(Collider other) {
+            if(other.CompareTag("weapon")){
+                if(enemyAI != null){
+                    Debug.Log("Attacked!");
+                    DoDamage(enemyAI.damage, killer);
+                }
+            }
+        }
+
+        private void OnCollisionEnter(Collision other) {
+            
+        }
+
         private void UpdateUI(float alpha)
         {
             if (type == HealthType.Humanoid && Actor.characterManager != null)

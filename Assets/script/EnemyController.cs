@@ -10,12 +10,13 @@ public class EnemyAI : MonoBehaviour
     public float attackRange = 2.0f;
     public float startMoveDelay = 1.0f; // 몬스터가 이동을 시작하기 전 지연 시간
 
-    private bool isAttacking = false; // 공격 중인지 확인하는 변수
+    public bool isAttacking = false; // 공격 중인지 확인하는 변수
     private bool canMove = false; // 이동 가능 여부
     private HealthSystem healthSystem;
     public float destroyDelay;
     public float attackCooldown = 1.0f; // 공격 쿨타임
     private float nextAttackTime = 0f; // 다음 공격 가능 시간
+    public int damage = 10;
 
     void Start()
     {

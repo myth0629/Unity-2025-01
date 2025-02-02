@@ -10,7 +10,7 @@ public class TriggerSubtitle : MonoBehaviour
     {
         if (subtitleManager == null)
         {
-             subtitleManager = FindObjectOfType<SubtitleManager>();
+             subtitleManager = FindFirstObjectByType<SubtitleManager>();
            if (subtitleManager == null)
             {
                Debug.LogError("SubtitleManager를 찾을 수 없습니다. Hierarchy 창에서 SubtitleManager 스크립트가 추가된 오브젝트를 할당해주세요.");
