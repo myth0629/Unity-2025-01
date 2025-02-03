@@ -13620,6 +13620,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorName: Zombie
+--- !u!114 &1055307222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055307213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cd6859c952ec644eaaafd4e22a280a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
 --- !u!1001 &1062801694
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21355,6 +21368,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1055307220}
+    - targetCorrespondingSourceObject: {fileID: 1309486516299566, guid: 227ee07e9e5b7914ba8fbb8f430be9a5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1055307222}
     - targetCorrespondingSourceObject: {fileID: 1003837193529640, guid: 227ee07e9e5b7914ba8fbb8f430be9a5,
         type: 3}
       insertIndex: -1
@@ -28027,6 +28044,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1458121186719874961, guid: 83518d3a053c23749b0b2ca449d3090f,
         type: 3}
+      propertyPath: sticky
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1458121186719874961, guid: 83518d3a053c23749b0b2ca449d3090f,
+        type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -28104,6 +28126,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6568331431585541110, guid: 83518d3a053c23749b0b2ca449d3090f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 6568331431585541110, guid: 83518d3a053c23749b0b2ca449d3090f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

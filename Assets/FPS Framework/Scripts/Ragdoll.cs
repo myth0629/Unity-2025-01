@@ -27,7 +27,7 @@ namespace Akila.FPSFramework
                 }
             }
 
-            Disable();
+            //Disable();
         }
 
         public void Enable()
@@ -59,7 +59,7 @@ namespace Akila.FPSFramework
 
         public void Disable()
         {
-            if (animator) animator.enabled = true;
+            // if (animator) animator.enabled = true;
 
             foreach (Rigidbody rigidbody in rigidbodies)
             {
