@@ -16,7 +16,7 @@ namespace Akila.FPSFramework
         {
             Controller = GetComponent<ICharacterController>();
             rigidbodies = GetComponentsInChildren<Rigidbody>();
-            if (!animator) animator = GetComponent<Animator>();
+            // if (!animator) animator = GetComponent<Animator>();
 
             foreach (Rigidbody rb in rigidbodies)
             {
@@ -32,7 +32,7 @@ namespace Akila.FPSFramework
 
         public void Enable()
         {
-            if (animator) animator.enabled = false;
+            //if (animator) animator.enabled = false;
 
             foreach (Rigidbody rigidbody in rigidbodies)
             {
@@ -59,7 +59,7 @@ namespace Akila.FPSFramework
 
         public void Disable()
         {
-            // if (animator) animator.enabled = true;
+            if (animator) animator.enabled = true;
 
             foreach (Rigidbody rigidbody in rigidbodies)
             {

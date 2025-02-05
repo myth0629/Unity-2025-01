@@ -14,7 +14,7 @@ public class EnemyAI : MonoBehaviour
     private bool canMove = false; // 이동 가능 여부
     private HealthSystem healthSystem;
     public float destroyDelay;
-    public float attackCooldown = 1.0f; // 공격 쿨타임
+    public float attackCooldown = 1.5f; // 공격 쿨타임
     private float nextAttackTime = 0f; // 다음 공격 가능 시간
     public int damage = 10;
 
@@ -42,8 +42,12 @@ public class EnemyAI : MonoBehaviour
 
         if (distanceToPlayer <= attackRange)
         {
+            Collider playerCollider = player.GetComponent<Collider>();
             // 공격 범위 내에 있으면 계속 Attack() 호출
-            Attack();
+            if(playerCollider != null)
+            {
+                Attack(playerCollider);
+            }
         }
         else
         {
@@ -62,10 +66,17 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void Attack()
+    private void Attack(Collider playerCollider)
     {
         if (Time.time >= nextAttackTime) // 현재 시간이 다음 공격 가능 시간보다 크거나 같으면
         {
+            healthSystem = playerCollider.GetComponent<HealthSystem>();
+
+            if(healthSystem != null)
+            {
+                healthSystem.DoDamage(damage, GetComponent<Actor>());
+            }
+
             isAttacking = true;
             animator.SetTrigger("Attack");
             agent.isStopped = true; // 공격 시 이동 중지
@@ -75,7 +86,14 @@ public class EnemyAI : MonoBehaviour
             
             // 공격 애니메이션이 끝나면 이동 재개
             Invoke("ResetIsStopped", animator.GetCurrentAnimatorStateInfo(0).length);
+            Invoke("AttackCheck", animator.GetCurrentAnimatorStateInfo(0).length);
+
         }
+    }
+
+    void AttackCheck()
+    {
+        isAttacking = false;
     }
 
     void ResetIsStopped()

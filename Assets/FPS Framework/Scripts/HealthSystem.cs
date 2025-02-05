@@ -83,8 +83,11 @@ namespace Akila.FPSFramework
             health += heal;
         }
 
-        private void DoDamage(float damage, Actor killer)
+        public void DoDamage(float damage, Actor killer)
         {
+            if (IsDead()) return;
+            health = Mathf.Max(0, health - damage); // 체력이 0 이하로 내려가지 않도록
+            
             health -= damage;
             this.killer = killer;
 
@@ -97,10 +100,12 @@ namespace Akila.FPSFramework
         }
 
         private void OnTriggerEnter(Collider other) {
-            if(other.CompareTag("weapon")){
-                if(enemyAI != null){
+            if(other.CompareTag("weapon"))
+            {
+                EnemyAI enemy = other.GetComponentInParent<EnemyAI>();
+                if(enemy != null && enemy.isAttacking){
                     Debug.Log("Attacked!");
-                    DoDamage(enemyAI.damage, killer);
+                    DoDamage(enemy.damage, enemy.GetComponent<Actor>());
                 }
             }
         }
@@ -122,7 +127,7 @@ namespace Akila.FPSFramework
         {
             enemyAI = GetComponent<EnemyAI>();
             
-            enemyAI?.ifDie();
+            enemyAI ?.ifDie();
             
             if(type == HealthType.Humanoid)
             {
