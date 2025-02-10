@@ -32,7 +32,7 @@ MonoBehaviour:
   defaultDecal: {fileID: 1000010844420130, guid: 4edabb1c0dde62743b137378c7d22980,
     type: 3}
   decalDirection: 0
-  fireRate: 1000
+  fireRate: 350
   muzzleVelocity: 250
   ejectionVelocity: 5
   impactForce: 15
@@ -106,9 +106,9 @@ MonoBehaviour:
   aimSpeed: 10
   aimFieldOfView: 50
   aimWeaponFieldOfview: 40
-  Movement_WalkSpeed: 5.5
-  Movement_RunSpeed: 10
-  Movement_TacticalSprintSpeed: 12
+  Movement_WalkSpeed: 5
+  Movement_RunSpeed: 6.5
+  Movement_TacticalSprintSpeed: 7
   Movement_AimWalkSpeed: 4
   Movement_FireWalkSpeed: 4
   allowFullMovementSpeedWhileAiming: 0

@@ -116,8 +116,8 @@ MonoBehaviour:
   aimFieldOfView: 50
   aimWeaponFieldOfview: 40
   Movement_WalkSpeed: 4
-  Movement_RunSpeed: 8
-  Movement_TacticalSprintSpeed: 9.6
+  Movement_RunSpeed: 5
+  Movement_TacticalSprintSpeed: 6
   Movement_AimWalkSpeed: 3.4
   Movement_FireWalkSpeed: 3
   allowFullMovementSpeedWhileAiming: 0

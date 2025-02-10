@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    public Transform player = GameObject.Find("Player").transform;
+    public Transform player;
     private NavMeshAgent agent;
     private Animator animator;
     public float attackRange = 2.0f;
@@ -18,6 +18,11 @@ public class EnemyAI : MonoBehaviour
     private float nextAttackTime = 0f; // 다음 공격 가능 시간
     public int damage = 10;
 
+    void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+    
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
