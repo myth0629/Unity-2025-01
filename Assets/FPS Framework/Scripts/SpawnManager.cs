@@ -53,6 +53,7 @@ namespace Akila.FPSFramework
             {
                 if (activeEnemies.Count < maxEnemyCount)
                 {
+                    Debug.Log("Spawn Enemy");
                     SpawnEnemy();
                 }
                 yield return new WaitForSeconds(spawnInterval);

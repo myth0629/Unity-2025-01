@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    public Transform player;
+    public Transform player = GameObject.Find("Player").transform;
     private NavMeshAgent agent;
     private Animator animator;
     public float attackRange = 2.0f;
