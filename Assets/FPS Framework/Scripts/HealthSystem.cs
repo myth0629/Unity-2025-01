@@ -34,6 +34,7 @@ namespace Akila.FPSFramework
         private bool died;
         public bool deadConfirmed { get; set; }
         private EnemyAI enemyAI;
+        private EliteEnemyAI eliteEnemyAI;
 
         private void Start()
         {
@@ -110,10 +111,6 @@ namespace Akila.FPSFramework
             }
         }
 
-        private void OnCollisionEnter(Collision other) {
-            
-        }
-
         private void UpdateUI(float alpha)
         {
             if (type == HealthType.Humanoid && Actor.characterManager != null)
@@ -126,8 +123,10 @@ namespace Akila.FPSFramework
         public void Die()
         {
             enemyAI = GetComponent<EnemyAI>();
+            eliteEnemyAI = GetComponent<EliteEnemyAI>();
             
             enemyAI ?.ifDie();
+            eliteEnemyAI ?.ifDie();
             
             if(type == HealthType.Humanoid)
             {
