@@ -18,7 +18,7 @@ MonoBehaviour:
   canves: {fileID: 6802205737550449059, guid: 0336a53be1116fe48935ea7a38bfc26e, type: 3}
   crosshair: {fileID: 4358158801835502854, guid: 27645de92401af74ba44a94455dc5867,
     type: 3}
-  shootingMechanism: 1
+  shootingMechanism: 0
   rechargingType: 0
   fireMode: 1
   fireRateUnit: 60

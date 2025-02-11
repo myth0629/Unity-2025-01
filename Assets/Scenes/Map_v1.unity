@@ -2093,6 +2093,26 @@ PrefabInstance:
       propertyPath: toggleCrouch
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6260321660814928506, guid: 365989104bab89047b810e46a38f7798,
+        type: 3}
+      propertyPath: ammo.Array.data[0].amount
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6260321660814928506, guid: 365989104bab89047b810e46a38f7798,
+        type: 3}
+      propertyPath: ammo.Array.data[1].amount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6260321660814928506, guid: 365989104bab89047b810e46a38f7798,
+        type: 3}
+      propertyPath: ammo.Array.data[2].amount
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6260321660814928506, guid: 365989104bab89047b810e46a38f7798,
+        type: 3}
+      propertyPath: ammo.Array.data[3].amount
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 9180581688508917381, guid: 365989104bab89047b810e46a38f7798,
         type: 3}
       propertyPath: m_Actions
@@ -28520,6 +28540,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1921698944313391061, guid: 967eb074ac4530540a31e13a3eb388b2,
+        type: 3}
+      propertyPath: m_Height
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4752170758858685868, guid: 967eb074ac4530540a31e13a3eb388b2,
         type: 3}
       propertyPath: m_Name
